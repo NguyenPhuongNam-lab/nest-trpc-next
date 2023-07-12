@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id            Int      @id @default(autoincrement())
+  full_name     String   @db.VarChar(50)
+  login_name    String   @unique @db.VarChar(30)
+  password_salt String   @db.VarChar(256)
+  password      String   @db.VarChar(256)
+  email         String   @db.VarChar(100)
+  last_login    DateTime
+  class_id      Int
+  parent_id     Int
+}
+
+// id INT AUTO_INCREMENT PRIMARY KEY,
+// full_name VARCHAR(50) NOT NULL,
+// login_name VARCHAR(30) NOT NULL UNIQUE,
+// pasword_salt VARCHAR(256) NOT NULL,
+// /* need to hide real password */
+// pasword VARCHAR(256) NOT NULL,
+// email VARCHAR(100),
+//  last_login DATETIME,
+//  class_id INT NOT NULL,
+// parent_id INT NOT NULL,
+//  FOREIGN KEY (class_id) REFERENCES class(id),
+// FOREIGN KEY (parent_id) REFERENCES parents(id)

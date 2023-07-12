@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
+        "autoprefixer",
         "nestjs",
+        "postcss",
         "subdirs",
         "Trpc"
     ]
